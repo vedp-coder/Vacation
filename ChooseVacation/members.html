@@ -3,30 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" href="stylemembers.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800&display=swap">
+  <link rel="stylesheet" type="text/css" href="css/stylemembers.css">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/en/face/work-sans" type="text/css">
   <title>Member Backgrounds</title>
 </head>
+
 <body>
+  <!-- Header section whichs contains the title and the navigation menu 
+  Created by: -->
+  <header>
+    <h1>Choose Your Vacation</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="changelogs.html">Change Document</a></li>
+        <li><a href="validator.html">Validation Tracker</a></li>
+        <li><a href="members.html">Members</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <section class="members-section">
-    <h2>Meet Our Team</h2>
-    <div class="dropdown-container">
-      <label for="member-select">Select a Member:</label>
-      <select id="member-select">
-        <option value="ben">Ben</option>
-        <option value="lyv">Lyv</option>
-        <option value="ved">Ved</option>
-        <option value="will">Will</option>
-      </select>
-    </div>
-    <div id="members-info" class="info-card">
-      <!-- Dynamic content appears here -->
-    </div>
-  </section>
-</main>
+  <!-- Main content section with the dropdown menu to select each member and display their info 
+  Created by: Ben -->
+  <main>
+    <section class="members-section">
+      <h2>Meet Our Team</h2>
+      <div class="dropdown-container">
+        <label for="member-select">Select a Member:</label>
+        <select id="member-select">
+          <option value="ben">Ben</option>
+          <option value="lyv">Lyv</option>
+          <option value="ved">Ved</option>
+          <option value="will">Will</option>
+        </select>
+      </div>
+      <div id="members-info" class="info-card">
+        <!-- Dynamic content appears here -->
+      </div>
+    </section>
+  </main>
 
-<script src="memberbackground.js"></script>
+  <footer>
+    <p>Copyright @2025 Choose Your Vacation</p>
+  </footer>
+
+  <!-- Javascript file for handling displaying each member's background -->
+  <script src="js/memberbackground.js"></script>
+
 </body>
 </html>
