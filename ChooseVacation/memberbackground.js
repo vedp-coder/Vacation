@@ -2,7 +2,7 @@
   memberBackground.js
   This script handles the display of background information for selected members.
   Author: Ben
-  Last Modified: 5/15/202
+  Last Modified: 5/15/2025
 */
 
 document.addEventListener("DOMContentLoaded", function() {
