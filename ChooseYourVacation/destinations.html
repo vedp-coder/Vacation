@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Destinations - ChooseYourVacation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ChooseYourVacation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="form.html">Get Recommendations</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Explore All Destinations</h1>
+            <p>Discover amazing places around the world</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="budgetFilter">Budget</label>
+                        <select id="budgetFilter">
+                            <option value="">All Budgets</option>
+                            <option value="budget">Budget</option>
+                            <option value="mid-range">Mid-range</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="seasonFilter">Season</label>
+                        <select id="seasonFilter">
+                            <option value="">All Seasons</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="fall">Fall</option>
+                            <option value="winter">Winter</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="activityFilter">Activity</label>
+                        <select id="activityFilter">
+                            <option value="">All Activities</option>
+                            <option value="beach">Beach & Water Sports</option>
+                            <option value="adventure">Adventure & Hiking</option>
+                            <option value="culture">Culture & History</option>
+                            <option value="nightlife">Nightlife & Entertainment</option>
+                            <option value="food">Food & Cuisine</option>
+                            <option value="nature">Nature & Wildlife</option>
+                            <option value="relaxation">Relaxation & Spa</option>
+                            <option value="shopping">Shopping</option>
+                        </select>
+                    </div>
+                    <button class="clear-filters" id="clearFilters">Clear Filters</button>
+                </div>
+            </div>
+
+            <!-- Results Count -->
+            <div class="results-count">
+                <p id="resultsCount">Showing all destinations</p>
+            </div>
+
+            <!-- Destinations Grid -->
+            <div class="results-grid" id="destinationsGrid">
+                <!-- Destinations will be populated here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <h3>No destinations found</h3>
+                <p>Try adjusting your filters to see more results.</p>
+                <button class="cta-btn" onclick="clearAllFilters()">Clear All Filters</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ChooseYourVacation</h4>
+                    <p>Your trusted travel recommendation advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="form.html">Get Recommendations</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@chooseyourvacation.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ChooseYourVacation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Destinations page functionality
+        let allDestinations = [];
+        let filteredDestinations = [];
+
+        // Load destinations on page load
+        document.addEventListener('DOMContentLoaded', loadDestinations);
+
+        async function loadDestinations() {
+            try {
+                const response = await fetch('data/destinations.json');
+                allDestinations = await response.json();
+                filteredDestinations = [...allDestinations];
+                displayDestinations();
+                updateResultsCount();
+            } catch (error) {
+                console.error('Error loading destinations:', error);
+                document.getElementById('emptyState').style.display = 'block';
+            }
+        }
+
+        function displayDestinations() {
+            const grid = document.getElementById('destinationsGrid');
+            
+            if (filteredDestinations.length === 0) {
+                grid.innerHTML = '';
+                document.getElementById('emptyState').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('emptyState').style.display = 'none';
+            
+            grid.innerHTML = filteredDestinations.map(destination => `
+                <div class="destination-card">
+                    <img src="${destination.image}" alt="${destination.name}" class="destination-image">
+                    <div class="destination-info">
+                        <h3>${destination.name}</h3>
+                        <p>${destination.description}</p>
+                        <div class="activities">
+                            ${destination.activities.map(activity => `<span class="activity-tag">${activity}</span>`).join('')}
+                        </div>
+                        <div class="destination-meta">
+                            <span class="budget-level ${destination.budget}">${destination.budget}</span>
+                            <span class="season">${destination.bestSeason}</span>
+                            <button class="favorite-btn" onclick="toggleFavorite('${destination.id}')" data-id="${destination.id}">
+                                ${getFavoriteIcon(destination.id)}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            updateFavoriteButtons();
+        }
+
+        function filterDestinations() {
+            const budgetFilter = document.getElementById('budgetFilter').value;
+            const seasonFilter = document.getElementById('seasonFilter').value;
+            const activityFilter = document.getElementById('activityFilter').value;
+
+            filteredDestinations = allDestinations.filter(destination => {
+                const matchesBudget = !budgetFilter || destination.budget === budgetFilter;
+                const matchesSeason = !seasonFilter || destination.bestSeason.toLowerCase().includes(seasonFilter.toLowerCase());
+                const matchesActivity = !activityFilter || destination.activities.some(activity => 
+                    activity.toLowerCase().includes(activityFilter.toLowerCase()) || 
+                    getActivityMapping(activityFilter).includes(activity.toLowerCase())
+                );
+
+                return matchesBudget && matchesSeason && matchesActivity;
+            });
+
+            displayDestinations();
+            updateResultsCount();
+        }
+
+        function getActivityMapping(filter) {
+            const mappings = {
+                'beach': ['beach', 'swimming', 'surfing', 'snorkeling'],
+                'adventure': ['hiking', 'trekking', 'climbing', 'adventure'],
+                'culture': ['museums', 'temples', 'architecture', 'culture', 'history'],
+                'nightlife': ['nightlife', 'bars', 'clubs', 'entertainment'],
+                'food': ['cuisine', 'food', 'dining', 'restaurants'],
+                'nature': ['wildlife', 'nature', 'parks', 'safari'],
+                'relaxation': ['spa', 'relaxation', 'wellness', 'massage'],
+                'shopping': ['shopping', 'markets', 'bazaars']
+            };
+            return mappings[filter] || [];
+        }
+
+        function updateResultsCount() {
+            const count = filteredDestinations.length;
+            const total = allDestinations.length;
+            const countElement = document.getElementById('resultsCount');
+            
+            if (count === total) {
+                countElement.textContent = `Showing all ${total} destinations`;
+            } else {
+                countElement.textContent = `Showing ${count} of ${total} destinations`;
+            }
+        }
+
+        function clearAllFilters() {
+            document.getElementById('budgetFilter').value = '';
+            document.getElementById('seasonFilter').value = '';
+            document.getElementById('activityFilter').value = '';
+            filteredDestinations = [...allDestinations];
+            displayDestinations();
+            updateResultsCount();
+        }
+
+        function getFavoriteIcon(destinationId) {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            return favorites.includes(destinationId) ? '❤️' : '🤍';
+        }
+
+        function toggleFavorite(destinationId) {
+            let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            
+            if (favorites.includes(destinationId)) {
+                favorites = favorites.filter(id => id !== destinationId);
+            } else {
+                favorites.push(destinationId);
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavoriteButtons();
+        }
+
+        function updateFavoriteButtons() {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                const destinationId = btn.getAttribute('data-id');
+                btn.innerHTML = favorites.includes(destinationId) ? '❤️' : '🤍';
+                btn.classList.toggle('active', favorites.includes(destinationId));
+            });
+        }
+
+        // Event listeners
+        document.getElementById('budgetFilter').addEventListener('change', filterDestinations);
+        document.getElementById('seasonFilter').addEventListener('change', filterDestinations);
+        document.getElementById('activityFilter').addEventListener('change', filterDestinations);
+        document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+    </script>
+</body>
+</html>
