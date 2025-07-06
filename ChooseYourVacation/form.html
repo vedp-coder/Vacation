@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Recommendations - ChooseYourVacation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ChooseYourVacation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="form.html">Get Recommendations</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Get Personalized Recommendations</h1>
+            <p>Tell us about your preferences and we'll find the perfect destinations for you</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <form id="recommendationForm">
+                    <!-- Travel Season -->
+                    <div class="form-section">
+                        <h3>When do you want to travel?</h3>
+                        <div class="form-group">
+                            <label for="season">Preferred Season</label>
+                            <select id="season" name="season" required>
+                                <option value="">Select a season</option>
+                                <option value="spring">Spring (March - May)</option>
+                                <option value="summer">Summer (June - August)</option>
+                                <option value="fall">Fall (September - November)</option>
+                                <option value="winter">Winter (December - February)</option>
+                                <option value="any">Any Season</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Budget Range -->
+                    <div class="form-section">
+                        <h3>What's your budget range?</h3>
+                        <div class="form-group">
+                            <label for="budget">Budget Level</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select your budget</option>
+                                <option value="budget">Budget (Under $1000)</option>
+                                <option value="mid-range">Mid-range ($1000 - $3000)</option>
+                                <option value="luxury">Luxury ($3000+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Activity Preferences -->
+                    <div class="form-section">
+                        <h3>What activities interest you?</h3>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="beach" name="activities" value="beach">
+                                <label for="beach">Beach & Water Sports</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="adventure" name="activities" value="adventure">
+                                <label for="adventure">Adventure & Hiking</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="culture" name="activities" value="culture">
+                                <label for="culture">Culture & History</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="nightlife" name="activities" value="nightlife">
+                                <label for="nightlife">Nightlife & Entertainment</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food" name="activities" value="food">
+                                <label for="food">Food & Cuisine</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="nature" name="activities" value="nature">
+                                <label for="nature">Nature & Wildlife</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="relaxation" name="activities" value="relaxation">
+                                <label for="relaxation">Relaxation & Spa</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="shopping" name="activities" value="shopping">
+                                <label for="shopping">Shopping</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Travel Duration -->
+                    <div class="form-section">
+                        <h3>How long is your trip?</h3>
+                        <div class="form-group">
+                            <label for="duration">Duration</label>
+                            <select id="duration" name="duration" required>
+                                <option value="">Select duration</option>
+                                <option value="weekend">Weekend (2-3 days)</option>
+                                <option value="week">1 Week</option>
+                                <option value="two-weeks">2 Weeks</option>
+                                <option value="month">1 Month or more</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Group Type -->
+                    <div class="form-section">
+                        <h3>Who are you traveling with?</h3>
+                        <div class="form-group">
+                            <label for="groupType">Group Type</label>
+                            <select id="groupType" name="groupType" required>
+                                <option value="">Select group type</option>
+                                <option value="solo">Solo Travel</option>
+                                <option value="couple">Couple/Partner</option>
+                                <option value="family">Family with Children</option>
+                                <option value="friends">Friends Group</option>
+                                <option value="business">Business Travel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Get My Recommendations</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ChooseYourVacation</h4>
+                    <p>Your trusted travel recommendation advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="form.html">Get Recommendations</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@chooseyourvacation.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ChooseYourVacation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>
