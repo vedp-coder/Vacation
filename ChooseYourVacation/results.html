@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recommendations - ChooseYourVacation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ChooseYourVacation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="form.html">Get Recommendations</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Your Perfect Destinations</h1>
+            <p>Based on your preferences, here are our top recommendations</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- User Preferences Summary -->
+            <div class="preferences-summary" id="preferencesSummary">
+                <h3>Your Preferences</h3>
+                <div class="preferences-tags" id="preferenceTags">
+                    <!-- Preference tags will be populated here -->
+                </div>
+                <button class="secondary-btn" onclick="window.location.href='form.html'">Modify Preferences</button>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results will be populated here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <h3>No destinations found</h3>
+                <p>We couldn't find any destinations matching your preferences. Try adjusting your criteria.</p>
+                <a href="form.html" class="cta-btn">Try Again</a>
+            </div>
+
+            <!-- More Options -->
+            <div class="text-center" style="margin-top: 3rem;">
+                <p>Want to see more options?</p>
+                <a href="destinations.html" class="secondary-btn">Browse All Destinations</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ChooseYourVacation</h4>
+                    <p>Your trusted travel recommendation advisor</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="form.html">Get Recommendations</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@chooseyourvacation.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ChooseYourVacation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>
